@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Defence Research &amp; Development Organisation (Demo Website)</title>
+<style>
+:root{
+  --navy:#0b2a55; --navy2:#12386f; --saffron:#e8801a; --green:#1b7a3d;
+  --ink:#1c2430; --muted:#5b6678; --line:#d6dce6; --bg:#f4f6fa; --card:#ffffff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--ink:#e6ebf4;--muted:#9aa7bd;--line:#2a3a57;--bg:#0c1220;--card:#131c30;--navy:#0a1d3c;--navy2:#16315e}
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;font-family:"Segoe UI",system-ui,-apple-system,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+.tri{height:6px;background:linear-gradient(90deg,var(--saffron) 33%,#fff 33% 66%,var(--green) 66%)}
+.topbar{background:var(--navy);color:#cfd9ec;font-size:13px}
+.topbar .wrap{display:flex;justify-content:space-between;gap:12px;padding:6px 20px;flex-wrap:wrap}
+.topbar a{text-decoration:none;margin-left:14px}
+.topbar a:hover{text-decoration:underline}
+header.brand{background:var(--card);border-bottom:1px solid var(--line)}
+header.brand .wrap{display:flex;align-items:center;gap:16px;padding:14px 20px}
+.emblem{width:56px;height:56px;border-radius:50%;background:var(--navy);display:grid;place-items:center;flex:none;border:3px solid var(--saffron)}
+.emblem svg{width:30px;height:30px}
+.brand h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(18px,3vw,26px);color:var(--navy);line-height:1.2}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .brand h1{color:#fff}}
+.brand p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+.brand .motto{margin-left:auto;text-align:right;font-family:Georgia,serif;font-style:italic;color:var(--saffron);font-size:15px}
+@media(max-width:700px){.brand .motto{display:none}}
+nav{background:var(--navy2);position:sticky;top:0;z-index:10}
+nav .wrap{display:flex;overflow-x:auto;padding:0 12px}
+nav a{color:#fff;text-decoration:none;padding:13px 16px;font-size:15px;white-space:nowrap;border-bottom:3px solid transparent}
+nav a:hover,nav a:focus-visible{background:rgba(255,255,255,.1);border-bottom-color:var(--saffron);outline:none}
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:36px;padding:56px 20px;align-items:center}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr;padding:40px 20px}}
+.hero h2{font-family:Georgia,serif;font-size:clamp(30px,5vw,48px);line-height:1.15;margin:0 0 14px;font-weight:700}
+.hero p{font-size:17px;color:#d6e0f3;max-width:56ch;margin:0 0 24px}
+.btn{display:inline-block;padding:12px 22px;border-radius:4px;text-decoration:none;font-weight:600;font-size:15px;margin:0 10px 10px 0}
+.btn.p{background:var(--saffron);color:#1a1205}
+.btn.s{border:1.5px solid #fff;color:#fff}
+.btn:hover{filter:brightness(1.1)}
+.btn:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid var(--saffron);outline-offset:2px}
+.radar{width:100%;max-width:380px;justify-self:center}
+.sweep{transform-origin:150px 150px;animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.sweep{animation:none}}
+.ticker{background:var(--card);border-bottom:1px solid var(--line)}
+.ticker .wrap{display:flex;gap:14px;align-items:center;padding:10px 20px;font-size:14px;overflow-x:auto;white-space:nowrap}
+.ticker b{background:var(--saffron);color:#1a1205;padding:2px 10px;border-radius:3px;font-size:13px}
+section{padding:54px 0}
+section h3{font-family:Georgia,serif;font-size:30px;color:var(--navy);margin:0 0 6px}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) section h3{color:#fff}}
+.sub{color:var(--muted);margin:0 0 28px;max-width:70ch}
+.bar{width:64px;height:4px;background:var(--saffron);margin:8px 0 18px}
+.grid{display:grid;gap:18px}
+.g4{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--navy2);border-radius:4px;padding:22px}
+.card h4{margin:0 0 8px;font-size:18px;color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .card h4{color:#fff}}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card a.more{display:inline-block;margin-top:12px;color:var(--saffron);font-weight:600;text-decoration:none}
+.card a.more:hover{text-decoration:underline}
+.ico{width:42px;height:42px;margin-bottom:12px;color:var(--saffron)}
+.stats{background:var(--navy);color:#fff;padding:40px 0}
+.stats .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:20px;text-align:center}
+.stats strong{display:block;font-family:Georgia,serif;font-size:40px;color:var(--saffron)}
+.stats span{font-size:14px;color:#c9d6ee}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+.tab{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:9px 16px;border-radius:4px;cursor:pointer;font:inherit;font-size:14px}
+.tab[aria-selected="true"]{background:var(--navy2);color:#fff;border-color:var(--navy2)}
+.panel{display:none}.panel.on{display:grid}
+.table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);font-size:15px}
+.table th{background:var(--navy2);color:#fff;text-align:left;padding:11px 14px}
+.table td{padding:11px 14px;border-top:1px solid var(--line)}
+.scroll{overflow-x:auto}
+.news{list-style:none;margin:0;padding:0}
+.news li{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.news time{flex:none;width:64px;text-align:center;background:var(--navy2);color:#fff;border-radius:4px;padding:6px 0;font-size:12px;line-height:1.2}
+.news time b{display:block;font-size:22px;color:var(--saffron)}
+.news h5{margin:0 0 2px;font-size:16px}
+.news p{margin:0;color:var(--muted);font-size:14px}
+.two{display:grid;grid-template-columns:2fr 1fr;gap:30px}
+@media(max-width:820px){.two{grid-template-columns:1fr}}
+.side .card{margin-bottom:18px}
+.side ul{margin:0;padding-left:18px;color:var(--muted);font-size:15px}
+.side li{margin:6px 0}
+form{display:grid;gap:12px}
+input,textarea,select{font:inherit;padding:10px 12px;border:1px solid var(--line);border-radius:4px;background:var(--card);color:var(--ink);width:100%}
+input:focus,textarea:focus{outline:3px solid var(--saffron);outline-offset:1px}
+#msg{color:var(--green);font-weight:600;min-height:1.4em}
+footer{background:var(--navy);color:#c9d6ee;padding:40px 0 20px;font-size:14px}
+footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px}
+footer h6{margin:0 0 10px;color:#fff;font-size:15px}
+footer a{display:block;text-decoration:none;padding:3px 0}
+footer a:hover{color:var(--saffron)}
+.copy{border-top:1px solid rgba(255,255,255,.15);margin-top:26px;padding-top:14px;text-align:center;font-size:13px}
+.note{background:#fff7e6;color:#5a3b00;border-bottom:1px solid #f0d49a;text-align:center;font-size:13px;padding:6px 12px}
+</style>
+</head>
+<body>
+<div class="note">Demo website built for learning. Not the official DRDO site. Content is illustrative.</div>
+<div class="tri"></div>
+<div class="topbar"><div class="wrap">
+  <span>Ministry of Defence, Government of India</span>
+  <span><a href="#contact">Skip to contact</a><a href="#news">Careers</a><a href="#contact">Tenders</a><a href="#contact">हिन्दी</a></span>
+</div></div>
+
+<header class="brand"><div class="wrap">
+  <div class="emblem" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/><path d="M12 7l1.8 3.6 3.9.6-2.8 2.7.7 3.9L12 16l-3.6 1.8.7-3.9L6.3 11.2l3.9-.6z" fill="#e8801a" stroke="none"/></svg>
+  </div>
+  <div>
+    <h1>Defence Research &amp; Development Organisation</h1>
+    <p>Department of Defence R&amp;D, Ministry of Defence</p>
+  </div>
+  <div class="motto">Strength's Origin is in Science</div>
+</div></header>
+
+<nav aria-label="Main"><div class="wrap">
+  <a href="#home">Home</a><a href="#about">About Us</a><a href="#tech">Technologies</a><a href="#labs">Laboratories</a><a href="#products">Products</a><a href="#news">Media &amp; News</a><a href="#contact">Contact</a>
+</div></nav>
+
+<main id="home">
+<div class="hero"><div class="wrap">
+  <div>
+    <h2>Building self-reliance in defence technology</h2>
+    <p>From missiles and radars to materials and life sciences, our scientists design systems that keep the armed forces ready and the nation secure.</p>
+    <a class="btn p" href="#tech">Explore technologies</a><a class="btn s" href="#labs">Find a laboratory</a>
+  </div>
+  <svg class="radar" viewBox="0 0 300 300" role="img" aria-label="Radar sweep illustration">
+    <defs><radialGradient id="g" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#e8801a" stop-opacity=".0"/><stop offset="1" stop-color="#e8801a" stop-opacity=".55"/></radialGradient></defs>
+    <g fill="none" stroke="#7fa0d6" stroke-opacity=".5"><circle cx="150" cy="150" r="140"/><circle cx="150" cy="150" r="100"/><circle cx="150" cy="150" r="60"/><circle cx="150" cy="150" r="20"/><path d="M10 150h280M150 10v280"/></g>
+    <g class="sweep"><path d="M150 150 L150 10 A140 140 0 0 1 249 51 Z" fill="url(#g)"/><line x1="150" y1="150" x2="150" y2="10" stroke="#e8801a" stroke-width="2"/></g>
+    <g fill="#fff"><circle cx="200" cy="90" r="4"/><circle cx="105" cy="120" r="3"/><circle cx="130" cy="210" r="4"/><circle cx="220" cy="180" r="3"/></g>
+  </svg>
+</div></div>
+
+<div class="ticker"><div class="wrap"><b>Latest</b><span>Flight-test of indigenous guided weapon concludes successfully</span><span>|</span><span>Call for proposals: Technology Development Fund</span><span>|</span><span>Young Scientists Lab applications open</span></div></div>
+
+<section id="about"><div class="wrap">
+  <h3>About us</h3><div class="bar"></div>
+  <p class="sub">DRDO is the research arm of the Ministry of Defence. We develop cutting-edge weapon systems, sensors and platforms, and transfer technology to industry so the country can produce them at home.</p>
+  <div class="grid g4">
+    <div class="card"><h4>Vision</h4><p>Empower India with cutting-edge defence technologies and a strong science and industry base.</p></div>
+    <div class="card"><h4>Mission</h4><p>Design, develop and deliver state-of-the-art sensors, weapon systems and platforms for the armed forces.</p></div>
+    <div class="card"><h4>Industry partnership</h4><p>Transfer of technology to public and private firms, startups and MSMEs across the country.</p></div>
+    <div class="card"><h4>Skilled workforce</h4><p>Scientists, engineers and technicians working across a national network of laboratories.</p></div>
+  </div>
+</div></section>
+
+<div class="stats"><div class="wrap">
+  <div><strong>50+</strong><span>Laboratories</span></div>
+  <div><strong>10</strong><span>Technology clusters</span></div>
+  <div><strong>1958</strong><span>Year of formation</span></div>
+  <div><strong>100s</strong><span>Technologies transferred</span></div>
+</div></div>
+
+<section id="tech"><div class="wrap">
+  <h3>Technology clusters</h3><div class="bar"></div>
+  <p class="sub">Choose a domain to see what our laboratories work on.</p>
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" aria-selected="true" data-p="p1">Aeronautics</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p2">Missiles</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p3">Electronics</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p4">Life sciences</button>
+    <button class="tab" role="tab" aria-selected="false" data-p="p5">Materials</button>
+  </div>
+  <div id="p1" class="panel on grid g3">
+    <div class="card"><h4>Combat aircraft</h4><p>Design and development of fighter aircraft and their flight-control systems.</p></div>
+    <div class="card"><h4>Unmanned systems</h4><p>Surveillance and combat UAVs with autonomous navigation and payloads.</p></div>
+    <div class="card"><h4>Gas turbines</h4><p>Aero-engine research for current and future platforms.</p></div>
+  </div>
+  <div id="p2" class="panel grid g3">
+    <div class="card"><h4>Strategic missiles</h4><p>Long-range systems that support the country's credible deterrence.</p></div>
+    <div class="card"><h4>Air defence</h4><p>Surface-to-air missile systems that protect cities and assets.</p></div>
+    <div class="card"><h4>Tactical missiles</h4><p>Anti-tank, air-to-air and anti-ship weapons for the services.</p></div>
+  </div>
+  <div id="p3" class="panel grid g3">
+    <div class="card"><h4>Radar</h4><p>Surveillance, fire-control and airborne early warning radars.</p></div>
+    <div class="card"><h4>Electronic warfare</h4><p>Sensors and countermeasures for the electromagnetic spectrum.</p></div>
+    <div class="card"><h4>Communications</h4><p>Secure networks and software-defined radios for the field.</p></div>
+  </div>
+  <div id="p4" class="panel grid g3">
+    <div class="card"><h4>High-altitude medicine</h4><p>Keeping soldiers healthy and effective in extreme terrain.</p></div>
+    <div class="card"><h4>Protective gear</h4><p>CBRN suits, masks and detection kits.</p></div>
+    <div class="card"><h4>Food technology</h4><p>Long-shelf-life rations and nutrition for harsh conditions.</p></div>
+  </div>
+  <div id="p5" class="panel grid g3">
+    <div class="card"><h4>Armour</h4><p>Lightweight ceramic and composite protection for vehicles and personnel.</p></div>
+    <div class="card"><h4>Special alloys</h4><p>Titanium and nickel alloys for aerospace and naval use.</p></div>
+    <div class="card"><h4>Stealth materials</h4><p>Coatings that reduce radar and infrared signatures.</p></div>
+  </div>
+</div></section>
+
+<section id="labs" style="background:var(--card)"><div class="wrap">
+  <h3>Laboratories</h3><div class="bar"></div>
+  <p class="sub">A sample of our network. Each laboratory focuses on a specific technology area.</p>
+  <div class="scroll"><table class="table">
+    <thead><tr><th>Laboratory</th><th>Location</th><th>Focus area</th></tr></thead>
+    <tbody>
+      <tr><td>Aeronautical Development Establishment</td><td>Bengaluru</td><td>Unmanned aerial systems</td></tr>
+      <tr><td>Defence Research &amp; Development Laboratory</td><td>Hyderabad</td><td>Missile systems</td></tr>
+      <tr><td>Electronics &amp; Radar Development Establishment</td><td>Bengaluru</td><td>Radar and sensors</td></tr>
+      <tr><td>Defence Institute of Physiology &amp; Allied Sciences</td><td>Delhi</td><td>Human performance</td></tr>
+      <tr><td>Defence Metallurgical Research Laboratory</td><td>Hyderabad</td><td>Advanced materials</td></tr>
+      <tr><td>Naval Science &amp; Technological Laboratory</td><td>Visakhapatnam</td><td>Underwater systems</td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="products"><div class="wrap">
+  <h3>Products &amp; systems</h3><div class="bar"></div>
+  <p class="sub">Systems developed and inducted with the armed forces.</p>
+  <div class="grid g4">
+    <div class="card"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12l9-9 3 6 6 3-9 9-3-6z"/></svg><h4>Guided missiles</h4><p>Precision weapons for land, sea and air.</p></div>
+    <div class="card"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 12L19 5"/></svg><h4>Radars</h4><p>Detection and tracking from ground, ship and air.</p></div>
+    <div class="card"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 3v6c0 5-3.5 9-8 11-4.5-2-8-6-8-11V5z"/></svg><h4>Armour &amp; protection</h4><p>Helmets, vests and vehicle armour.</p></div>
+    <div class="card"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 14l10-9 10 9M6 12v8h12v-8"/></svg><h4>Naval systems</h4><p>Sonars, torpedoes and decoys.</p></div>
+  </div>
+</div></section>
+
+<section id="news" style="background:var(--card)"><div class="wrap two">
+  <div>
+    <h3>Media &amp; news</h3><div class="bar"></div>
+    <ul class="news">
+      <li><time><b>12</b>Nov</time><div><h5>Successful flight-test of new-generation system</h5><p>The test met all mission objectives, as tracked by range instruments.</p></div></li>
+      <li><time><b>03</b>Nov</time><div><h5>Technology handed to industry partners</h5><p>Licence agreements signed with three MSMEs for manufacturing.</p></div></li>
+      <li><time><b>21</b>Oct</time><div><h5>Young scientists programme announces new cohort</h5><p>Selected researchers begin work across five laboratories.</p></div></li>
+      <li><time><b>09</b>Oct</time><div><h5>Defence startup challenge opens</h5><p>Proposals invited for sensors, autonomy and materials.</p></div></li>
+    </ul>
+  </div>
+  <aside class="side">
+    <div class="card"><h4>Quick links</h4><ul><li><a href="#contact">Tenders</a></li><li><a href="#contact">Recruitment</a></li><li><a href="#tech">Technology catalogue</a></li><li><a href="#contact">Right to Information</a></li></ul></div>
+    <div class="card"><h4>For industry</h4><p>Interested in licensing a technology? Write to us and we will connect you with the right laboratory.</p></div>
+  </aside>
+</div></section>
+
+<section id="contact"><div class="wrap two">
+  <div>
+    <h3>Contact us</h3><div class="bar"></div>
+    <p class="sub">Send a question about careers, tenders or technology transfer.</p>
+    <form id="f">
+      <input name="n" placeholder="Full name" required aria-label="Full name">
+      <input name="e" type="email" placeholder="Email address" required aria-label="Email address">
+      <select aria-label="Topic"><option>Technology transfer</option><option>Careers</option><option>Tenders</option><option>General enquiry</option></select>
+      <textarea rows="4" placeholder="Your message" required aria-label="Your message"></textarea>
+      <div><button class="btn p" style="border:0;cursor:pointer;font:inherit;font-weight:600" type="submit">Send message</button></div>
+      <div id="msg" role="status"></div>
+    </form>
+  </div>
+  <aside class="side"><div class="card"><h4>Head office</h4><p>DRDO Bhawan, Rajaji Marg<br>New Delhi 110011<br>India</p></div></aside>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div><h6>About</h6><a href="#about">Vision and mission</a><a href="#labs">Laboratories</a><a href="#news">News</a></div>
+  <div><h6>Work with us</h6><a href="#contact">Careers</a><a href="#contact">Tenders</a><a href="#contact">Industry</a></div>
+  <div><h6>Policies</h6><a href="#home">Privacy</a><a href="#home">Accessibility</a><a href="#home">Terms of use</a></div>
+  <div><h6>Disclaimer</h6><p>This is an unofficial demo page made for learning. For real information, visit the official DRDO website.</p></div>
+</div><div class="wrap copy">© 2026 Demo project. All content is illustrative.</div></footer>
+
+<script>
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.setAttribute('aria-selected','false')});
+    document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on')});
+    t.setAttribute('aria-selected','true');
+    document.getElementById(t.dataset.p).classList.add('on');
+  });
+});
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('msg').textContent='Message sent. We will reply to your email.';
+  e.target.reset();
+});
+</script>
+</body>
+</html>
